@@ -1,0 +1,25 @@
+<h1> List Of Users</h1>
+<%= link_to 'Login' , users_login_path %> |<%= link_to 'Register' , new_user_path %>
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Password</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.id %></td>
+
+			<td><%= user.name %></td>
+
+			<td><%= user.email %></td>
+
+			<td><%= user.password %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
