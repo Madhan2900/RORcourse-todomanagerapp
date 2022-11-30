@@ -10,14 +10,14 @@
 	</section>
 	
 	<%= render partial: "todo-section", locals: {
-		section_title: "Overdue",
+		section_title: "OverDue",
 		todos: Todo.overdue,
 		show_due_date: true
 	}
 	%>
 
 	<%= render partial: "todo-section", locals: {
-		section_title: "Overtoday",
+		section_title: "DueToday",
 		todos: Todo.due_today,
 		show_due_date: false
 	}

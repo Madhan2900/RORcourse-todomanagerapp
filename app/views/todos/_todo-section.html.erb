@@ -11,11 +11,26 @@
 			<ul style="list-style: none;">
 				<li class="TodoItem">
 					<label class="TodoItem-container">
+						<% if section_title == "OverDue" && todo.completed == false %>
 						<input class="TodoItem-checkbox" type="checkbox" >
 						<p class= "TodoItem-task"><%= todo.todo_text %></p>
 						<% if show_due_date %>
 						<p class= "TodoItem-duedate"><%= todo.due_date.to_formatted_s(:short) %></p>
 						<% end %>
+						<% elsif section_title != "OverDue" %>
+						<%if todo.completed %>
+						<input class="TodoItem-checkbox" type="checkbox" checked>
+						<p class= "TodoItem-task" style="text-decoration: line-through;"><%= todo.todo_text %></p>
+						<% else %>
+						<input class="TodoItem-checkbox" type="checkbox">
+						<p class= "TodoItem-task"><%= todo.todo_text %></p>
+						<% end %>
+						
+						<% if show_due_date %>
+						<p class= "TodoItem-duedate"><%= todo.due_date.to_formatted_s(:short) %></p>
+						<% end %>
+						<% end %>
+
 					</label>
 				</li>
 			</ul>
