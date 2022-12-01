@@ -99,12 +99,35 @@ body{
 	align-items: center;
 }
 
-.TodoItemRemainig-date{
+.TodoItem-delete > img{
+	width: 30px;
+	margin-left: 10px;
+}
+
+.TodoItem-duedate{
 
 	margin-left: 10px;
 	color: grey;
 	font-size: 12px;
 	display: inline;
+}
+
+.TodoItem-CompletedText{
+
+	margin-left: 10px;
+	color: #453C52;
+	font-size: 14px;
+	display: inline;
+	text-decoration: line-through;
+}
+
+.Todo-BinIcon{
+	src: "icons/trash-solid.svg";
+	margin-left: 10px;
+}
+.TodoItem-empty{
+
+	display: none;
 }
 
 .TodoItem-overduelabel{

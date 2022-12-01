@@ -11,25 +11,38 @@
 			<ul style="list-style: none;">
 				<li class="TodoItem">
 					<label class="TodoItem-container">
-						<% if section_title == "OverDue" && todo.completed == false %>
-						<input class="TodoItem-checkbox" type="checkbox" >
-						<p class= "TodoItem-task"><%= todo.todo_text %></p>
+						<% if section_title == "OverDue" %>
+						<input class='<%= todo.completed ? "TodoItem-empty" : "TodoItem-checkbox" %>' type="checkbox" >
+						<p class= '<%= todo.completed ? "TodoItem-empty" : "TodoItem-task" %>' ><%= todo.todo_text %></p>
 						<% if show_due_date %>
-						<p class= "TodoItem-duedate"><%= todo.due_date.to_formatted_s(:short) %></p>
+						<p class= '<%= todo.completed ? "TodoItem-empty" : "TodoItem-task" %>'><%= todo.due_date.to_formatted_s(:short) %></p>
+						<%= form_with(url: "/todos/#{todo.id}", method: "delete") do%>
+							<input class= '<%= todo.completed ? "TodoItem-empty" : "Todo-BinIcon" %>' href= "javascript:void(0)" type="image">
+						<% end %>
 						<% end %>
 						<% elsif section_title != "OverDue" %>
-						<%if todo.completed %>
-						<input class="TodoItem-checkbox" type="checkbox" checked>
-						<p class= "TodoItem-task" style="text-decoration: line-through;"><%= todo.todo_text %></p>
-						<% else %>
-						<input class="TodoItem-checkbox" type="checkbox">
-						<p class= "TodoItem-task"><%= todo.todo_text %></p>
-						<% end %>
+						<%= form_with(url: "/todos/#{todo.id}", method: "put") do%>
+							<input 
 						
+								name="completed" 
+								class="TodoItem-checkbox" 
+								type="checkbox" <%= todo.completed ? "checked" : "" %> 
+								onclick="this.form.submit()"														
+
+							/>
+							<!-- this.form.submit() is JS line of code -->
+						<% end %>
+						<p class= '<%= todo.completed ? "TodoItem-CompletedText" : "TodoItem-task" %>' ><%= todo.todo_text %></p>
 						<% if show_due_date %>
 						<p class= "TodoItem-duedate"><%= todo.due_date.to_formatted_s(:short) %></p>
+						<%= form_with(url: "/todos/#{todo.id}", method: "delete") do%>
+							
+							<input type="image" src="icons/trash-solid.svg" style="margin-left: 10px;" >
+							
 						<% end %>
 						<% end %>
+						<% end %>
+						
 
 					</label>
 				</li>

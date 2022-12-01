@@ -15,12 +15,15 @@ class TodosController < ApplicationController
 	end
 
 	def create
-		@todo = Todo.new(todo_params)
-		if @todo.save
-			redirect_to todos_path
-		else
-			render :new
-		end
+		
+		todo_text = params[:todo_text]
+		due_date = DateTime.parse(params[:due_date])
+		new_todo = Todo.create!(
+			todo_text: todo_text,
+			due_date: due_date,
+			completed: false
+			)
+		redirect_to todos_path
 	end
 
 	def edit
@@ -28,18 +31,28 @@ class TodosController < ApplicationController
 	end
 
 	def update
-		@todo = Todo.find(params[:id])
-		if @todo.update(todo_params)
-			redirect_to todos_path
-		else
-			render :edit
-		end
+		id = params[:id]
+		completed = params[:completed]
+		todo = Todo.find(id)
+		todo.completed = completed
+		todo.save!
+
+		redirect_to todos_path
+
 	end
 
-	private
+	def destroy
+		id = params[:id]
+		todo = Todo.find(id)
+		todo.destroy
 
-	def todo_params
-		params.require(:todo).permit(:todo_text, :due_date, :completed)
+		redirect_to todos_path
 	end
+
+	#private
+
+	#def todo_params
+		#params.require(:todo).permit(:todo_text, :due_date, :completed)
+	#end
 
 end
