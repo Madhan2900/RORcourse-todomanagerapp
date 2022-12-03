@@ -1,22 +1,35 @@
-<h1> New User Regitration </h1>
-<%= form_with model: @user do |form| %>
-	<div>
-		<%= form.label :name %><br>
-		<%= form.text_field :name %>
-	</div>
-	<div>
-		<%= form.label :email %><br>
-		<%= form.email_field :email %>
-	</div>
+<p class="UserRegistration-Title">Welcome New User!</p>
 
-	<div>
-		<%= form.label :password %><br>
-		<%= form.password_field :password %>
-	</div>
 
-	<div>
-		<%= form.submit %>
-	</div>
+<section class="UserRegistration-section">
 
-<%= link_to 'back' , users_path %>
-<% end %>
+	<%= form_with url: users_path  do |form| %>
+		
+			<div class="Form-Section">
+				<p class="UserRegistration-fieldtitle">First Name</p>
+				<%= form.text_field :first_name , class: "Form-input" %>
+			</div>
+
+			<div class="Form-Section">
+				<p class="UserRegistration-fieldtitle">Last Name</p>
+				<%= form.text_field :last_name , class: "Form-input" %>
+			</div>
+
+			<div class="Form-Section">
+				<p class="UserRegistration-fieldtitle">Email</p>
+				<%= form.email_field :email , class: "Form-input" %>
+			</div>
+
+			<div class="Form-Section">
+				<p class="UserRegistration-fieldtitle">Password</p>
+				<%= form.password_field :password , class: "Form-input" %>
+			</div>
+
+			<div class="Form-Section">
+				<%= form.submit "Sign-up!" , class: "Form-SubmitButton" %>
+			</div>
+		
+
+	<% end %>
+
+</section>

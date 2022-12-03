@@ -1,0 +1,33 @@
+.UserRegistration-Title{
+	font-size: 40px;
+	margin-bottom: 10px;
+
+}
+
+.UserRegistration-section{
+
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+.UserRegistration-fieldtitle{
+	margin-bottom: 8px;
+	color: darkgrey;
+}
+
+.Form-input{
+	font-size: 20px;
+	padding: 8px;
+}
+
+.Form-SubmitButton{
+	font-size: 20px;
+	padding: 10px;
+	background-color: green;
+	border: 0;
+	border-radius: 4px;
+}
+
+.Form-Section{
+	margin-bottom: 10px;
+}
