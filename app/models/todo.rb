@@ -1,8 +1,15 @@
 class Todo < ActiveRecord::Base
 
-	belongs_to :user		# knows that there is a table todos and finds a todo for that user using the user_id
+	validates :todo_text, presence: true
+	validates :todo_text, length: {minimum: 2}
+	validates :due_date, presence: true
+
+	belongs_to :user	
+							# knows that there is a table todos and finds a todo for that user using the user_id
 							# Todo.last
 							# Todo.last.user displays user details of the last todo.
+
+
 
 	def due_today?
 		due_date == Date.today 
