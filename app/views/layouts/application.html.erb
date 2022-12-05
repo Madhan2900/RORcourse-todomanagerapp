@@ -12,7 +12,13 @@
 
   <body>
     <% if @current_user %>
-      <p class="UserHeader">Welcome <%= @current_user.first_name %>!</p>
+      <div style="background-color: lightgrey; display: flex; vertical-align: middle;">
+        <p class="UserHeader">
+          Welcome <%= @current_user.first_name %>!
+          <%= button_to "Sign-out" , destroy_session_path , method: "delete" , class: "Button" %>
+        </p>
+      </div>
+      
     <% end %>
     <%= yield %>
   </body>

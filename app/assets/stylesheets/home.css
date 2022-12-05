@@ -12,10 +12,17 @@
 	font-size: 16px;
 }
 
+
 .UserHeader{
 
-	padding: 10px;
 	font-size: 14px;
-	background-color: lightgrey;
+	margin-left: 10px;
 
 }
+
+.Button{
+	margin-left: 270px;
+	margin-top: 10px;
+}
+
+
