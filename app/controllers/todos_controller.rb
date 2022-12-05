@@ -1,7 +1,10 @@
 class TodosController < ApplicationController
+
+	#skip_before_action :ensure_user_logged_in
 	def index
-		@todos = Todo.all
+		#@todos = Todo.all
 		#render plain: Todo.order(:due_date).map{|todo| todo.to_pleasant_string}.join("\n")
+		render "index"
 	end
 
 	#def show
